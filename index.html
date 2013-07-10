@@ -6,7 +6,8 @@
 <body>
 <form action="upload.php" method="post" enctype="multipart/form-data">
   ファイル：<br />
-  <input type="file" name="upfile" size="30" /><br />
+  <input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+  <input type="file" name="userfile" size="30" /><br />
   <br />
   <input type="submit" value="アップロード" />
 </form>

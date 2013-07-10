@@ -1,21 +1,22 @@
+<?php
+
+include_once('fileclass.php');
+
+?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>sample</title>
 </head>
 <body>
-<p><?php
+<p>
+<?php
 
-     if (is_uploaded_file($_FILES["upfile"]["tmp_name"])) {
-         if (move_uploaded_file($_FILES["upfile"]["tmp_name"], "./stfile/" . $_FILES["upfile"]["name"])) {
-             chmod("./stfile/" . $_FILES["upfile"]["name"], 0644);
-             echo $_FILES["upfile"]["name"] . "をアップロードしました。";
-         } else {
-             echo "ファイルをアップロードできません。";
-         }
-     } else {
-         echo "ファイルが選択されていません。";
-     }
+    $fname = new FileUP();
+if( 1 == $fname->ReceiveFile($_FILES["userfile"]["tmp_name"], $_FILES["userfile"]["name"])){
+        echo "Error file up.";
+    }
+ 
 
 ?></p>
 </body>
