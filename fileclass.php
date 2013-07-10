@@ -2,7 +2,6 @@
 
 include_once('config.php');
 
-
 class FileUP 
 {
     private $name; // File name.
