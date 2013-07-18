@@ -1,0 +1,62 @@
+2013-07-17  IKENO Naoki  <nao@kyo-to.net>
+
+	* index.php: 
+	index.html を index.php に変更した
+	メールチェックを javascript でできるようにした
+
+	・同じファイル名でも上書きしないように
+	・ファイル名から目的のファイルを推測されないように
+	するために、保存するときには、ファイル名をハッシュ値のファイル名にして、
+	DLするときに、元のファイル名に戻してDL用のURLを生成するのがいい？
+	→DL用に生成したファイル名をいつ削除するのか。
+	→→DLの終了は測定できない。
+	    ・一定時間で削除
+	    ・DL URLそのものが生成されたURLにする
+
+2013-07-12  IKENO Naoki  <nao@kyo-to.net>
+
+	* index.html: 
+
+	FileUp クラス
+	ReceiveFile( $ftmp, $fname )
+	SendFile()
+	DelFile( $fname )
+
+	chMail クラス
+	Adderchk( $adder )
+	Sendmail ( $adder , $msg )
+
+	* フィールドレイアウト
+	・日付
+	・URL用ハッシュ値
+	・パスワード
+	・元ファイル名
+	・コメント
+
+	* ファイルアッププログラム
+
+	・ファイルの保存とDLについて
+	DL用URLを生成する
+
+	・UPについて
+	ファイル名と時間をsaltにハッシュ値を生成
+	DBファイルに
+	[ハッシュ値、自動生成パス,ファイル名]を記録
+	ハッシュ値からURLを生成する
+	メールでURL、パスを送る 
+	
+	・DLについて
+	アクセスするとDLパス入力がある
+	→パスワードOK→DL
+	→パスワードNG→Repassword
+
+	ファイル名はUP時とDL時同じものにする
+	[ハッシュ,パス,DLファイル名]のDB
+	  最初はcsvで、次に sqllite を目標
+
+	アクセスがあるとDBファイルからハッシュで検索、パスワードを保存してマッチをチェック、
+	  OK→DL URL へリダイレクト
+	  ND→Repass
+
+	
+
