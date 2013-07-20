@@ -1,3 +1,20 @@
+2013-07-20  IKENO Naoki  <nao@kyo-to.net>
+
+	* upload.php (else): 
+	・保存ディレクトリについて
+	 ファイル名+time を salt に hash 
+	 hash でサブディレクトリを作って、そこに元のファイル名でアップ
+
+	・DLについて
+	  ?id=hash の URL をメールで送る、
+	  パスを入力する
+	 hash + パスで DB chk
+	 ok→ファイル名のURLを表示してDLさせる
+
+	DB　upday,hash,passhash,filenm,comm
+	
+	
+	
 2013-07-17  IKENO Naoki  <nao@kyo-to.net>
 
 	* index.php: 

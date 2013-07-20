@@ -11,11 +11,30 @@ print <<< EOP
   <link href="./css/base.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
    // <!--
-    function CheckMail(){
+
+    function CheckForm(){
+	var flags = 0;
+	if(document.form.userfile.value == ""){
+	    flags = 1;
+	}
 	if(!document.form.mailadd.value.match(/.+@morris.co.jp/)){
+	    flags = flags + 2;
+	}
+
+	switch(flags){
+	case 1:
+	    window.alert('ファイルを指定してください。');
+	    return false;
+	    break;
+	case 2:
 	    window.alert('モーリス社員のメールアドレスを入力してください。');
 	    return false;
-	} else {
+	    break;
+	case 3:
+	    window.alert('ファイル名と、メールアドレスを入力してください。');
+	    return false;
+	    break;
+	default:
 	    return true;
 	}
     }
@@ -23,7 +42,7 @@ print <<< EOP
     </script>
 </head>
 <body>
-<form action="upload.php" method="post" name="form" enctype="multipart/form-data" onSubmit="return CheckMail()" >
+<form action="upload.php" method="post" name="form" enctype="multipart/form-data" onSubmit="return CheckForm()" >
   <dl class="upform">
     <dt>ファイル：</dt>
     <dd><input type="hidden" name="max_file_size" value="100000000" />

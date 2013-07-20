@@ -1,7 +1,5 @@
 <?php
-
 include_once('fileclass.php');
-
 ?>
 <html>
 <head>
@@ -13,10 +11,13 @@ include_once('fileclass.php');
 <?php
 
     $fname = new FileUP();
-if( 1 == $fname->ReceiveFile($_FILES["userfile"]["tmp_name"], $_FILES["userfile"]["name"])){
-        echo "Error file up.";
+    if( 1 == $fname->ReceiveFile($_FILES["userfile"]["tmp_name"], $_FILES["userfile"]["name"])){
+        echo "エラーが発生したため、ファイルがアップロードされませんでした.\n";
+    } else {
+        echo "ファイルは正常にアップロードされました。.\n";
     }
- 
+
+
 
 ?></p>
 </body>
